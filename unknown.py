@@ -119,11 +119,10 @@ class Stopwatch(Frame):
         stringvar.pack(fill=X, expand = NO, pady =2, padx =2)
 
     def Settime(self, npos):
-        hours = int( npos/3600 )
-        minutes = int( (npos/60) - hours * 60 )
+        minutes = int( (npos/60))
         seconds = int( npos - minutes * 60)
-        milliseconds = int((npos - hours * 3600 - minutes * 60 - seconds) * 100)
-        self.timestr.set('%02d:%02d:%02d:%02d'%(hours, minutes, seconds, milliseconds))
+        milliseconds = int((npos - minutes * 60 - seconds) * 100)
+        self.timestr.set('%02d:%02d:%02d'%(minutes, seconds, milliseconds))
 
     def Updater(self):
         self.nexttime = time.time() - self.starttime
